@@ -1,32 +1,34 @@
-
 using Keys;
 using Keys.InterOp;
 
-class KeysExample : IDisposable {   
-
-    Keys.Keys keys;
+namespace Example {
     
-    public KeysExample(IntPtr windowHandle) {
+    class KeysExample : IDisposable {   
 
-        /* windowHandle should be a handle to a compatible window. 
-           Xna windows work; Windows Forms have some issues. */
-
-        keys = new Keys.Keys(windowHandle);
-
-        keys[VirtualKeys.SPACE].Pressed += (sender, args) => {
-            //Do stuff when the spacebar is pressed.
-        };
-
-        keys[VirtualKeys.RETURN].Released += (sender, args) => {
-            //Do stuff when the return key is released;
-        };
-    }      
+        Keys.Keys keys;
     
-    public void Dispose() {
+        public KeysExample(IntPtr windowHandle) {
 
-        //Keys uses unmanaged resources that must be disposed.
+            /* windowHandle should be a handle to a compatible window. 
+               Xna windows work; Windows Forms have some issues. */
 
-        keys.Dispose();
+            keys = new Keys.Keys(windowHandle);
+
+            keys[VirtualKeys.SPACE].Pressed += (sender, args) => {
+                //Do stuff when the spacebar is pressed.
+            };
+
+            keys[VirtualKeys.RETURN].Released += (sender, args) => {
+                //Do stuff when the return key is released;
+            };
+        }      
+    
+        public void Dispose() {
+
+            //Keys uses unmanaged resources that must be disposed.
+
+            keys.Dispose();
+        }
     }
 }
 
